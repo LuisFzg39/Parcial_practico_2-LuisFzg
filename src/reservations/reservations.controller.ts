@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, ParseIntPipe, Patch, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, ParseIntPipe, Patch, Post, ValidationPipe } from '@nestjs/common';
 import { requestValidationPipe } from '../common/request-validation.pipe';
 import { CreateReservationDto } from './dto/create-reservation.dto';
 import { ReservationsService } from './reservations.service';
@@ -8,6 +8,10 @@ export class ReservationsController {
   constructor(private readonly reservationsService: ReservationsService) {}
 
   // TODO 1: Implement POST /api/reservations with a validated CreateReservationDto.
+  @Post()
+  create(@Body(requestValidationPipe) CreateReservationDto: CreateReservationDto) {
+    return this.reservationsService.create(CreateReservationDto);
+}
 
   // TODO 2: Implement PATCH /api/reservations/:id/cancel with ParseIntPipe and no body.
 
