@@ -13,7 +13,9 @@ export class ReservationsService {
     private readonly reservationsRepository: Repository<ReservationEntity>,
     @InjectRepository(RoomEntity)
     private readonly roomsRepository: Repository<RoomEntity>,
-    // TODO 2: Inject ReservationRulesService through this constructor.
+
+    private readonly reservationRulesService: ReservationRulesService,
+    
   ) {}
 
   async cancel(id: number): Promise<ReservationEntity> {
