@@ -14,8 +14,11 @@ export class ReservationsController {
 }
 
   // TODO 2: Implement PATCH /api/reservations/:id/cancel with ParseIntPipe and no body.
+  @Patch(':id/ready')
+  cancel(@Param('id', ParseIntPipe) id: number) {
+    return this.reservationsService.cancel(id);
+  }
   
-
   // The endpoints below are completed. Do not change them.
   @Get()
   findAll() {
